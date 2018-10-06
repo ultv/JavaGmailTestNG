@@ -14,18 +14,18 @@ public class LoginPageTest {
     public static WebDriver driver;
     public static LoginPage loginPage;
 
-    @Parameters("browser")
+    //@Parameters("browser")
     @BeforeTest
-    protected WebDriver getDriver(String browser) {
-
-        if(browser.equals("chrome")) {
+    protected WebDriver getDriver() //String browser) {
+    {
+      //  if(browser.equals("chrome")) {
             System.setProperty("webdriver.chrome.driver", ConfigProperties.getTestProperty("chromeDriverPath"));
             driver = new ChromeDriver();
-        }
-        else if (browser.equals("firefox")){
-            System.setProperty("webdriver.gecko.driver", ConfigProperties.getTestProperty("firefoxDriverPath"));
-            driver = new FirefoxDriver();
-        }
+       // }
+       // else if (browser.equals("firefox")){
+       //     System.setProperty("webdriver.gecko.driver", ConfigProperties.getTestProperty("firefoxDriverPath"));
+       //     driver = new FirefoxDriver();
+       // }
 
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
