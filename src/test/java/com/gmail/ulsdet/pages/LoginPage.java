@@ -51,13 +51,11 @@ public class LoginPage {
 
     public boolean itsVissibleElement(By element)
     {
-        try
-        {
+        try {
             WebDriverWait wait = new WebDriverWait(driver, 15);
             wait.until(ExpectedConditions.visibilityOfElementLocated(element));
         }
-        catch (NoSuchElementException e)
-        {
+        catch (NoSuchElementException e) {
             return false;
         }
 

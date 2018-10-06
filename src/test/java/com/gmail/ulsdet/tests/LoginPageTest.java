@@ -7,6 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import java.util.concurrent.TimeUnit;
 import com.gmail.ulsdet.pages.LoginPage;
+import utils.ConfigProperties;
 
 public class LoginPageTest {
 
@@ -18,12 +19,11 @@ public class LoginPageTest {
     protected WebDriver getDriver(String browser) {
 
         if(browser.equals("chrome")) {
-            System.setProperty("webdriver.chrome.driver", "C:\\CODE\\JAVA\\SeleniumDrivers\\chromedriver\\v.2.42\\chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver", ConfigProperties.getTestProperty("chromeDriverPath"));
             driver = new ChromeDriver();
         }
         else if (browser.equals("firefox")){
-            System.setProperty("webdriver.gecko.driver", "C:\\CODE\\JAVA\\SeleniumDrivers\\geckodriver\\v0.16.0\\geckodriver.exe");
-            //System.setProperty("webdriver.gecko.driver", "C:\\CODE\\JAVA\\SeleniumDrivers\\geckodriver.exe");
+            System.setProperty("webdriver.gecko.driver", ConfigProperties.getTestProperty("firefoxDriverPath"));
             driver = new FirefoxDriver();
         }
 
@@ -38,9 +38,9 @@ public class LoginPageTest {
     public void loginTest() {
 
         loginPage = new LoginPage(driver);
-        loginPage.openPage("https://gmail.com");
-        loginPage.inputLogin("ulsdet");
-        loginPage.inputPass("ljrth%8102");
+        loginPage.openPage(ConfigProperties.getTestProperty("baseUrl"));
+        loginPage.inputLogin(ConfigProperties.getTestProperty("login"));
+        loginPage.inputPass(ConfigProperties.getTestProperty("pass"));
         boolean actual = loginPage.itsVissibleElement(loginPage.getSearchFieldBy());
         Assert.assertTrue(actual);
     }
