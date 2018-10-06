@@ -25,27 +25,24 @@
             <scope>test</scope>
         </dependency>
 
-    </dependencies>
-    
-    <properties>
-        <maven.compiler.source>6</maven.compiler.source>
-        <maven.compiler.target>1.6</maven.compiler.target>
-    </properties>
-        
-    <!--Allure TestNG -->
-    <properties>
-    <aspectj.version>1.8.10</aspectj.version>
-    </properties>
-
-    <dependencies>
+        <!--Allure TestNG -->
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-testng</artifactId>
             <version>LAST_VERSION</version>
             <scope>test</scope>
         </dependency>
+        
     </dependencies>
-
+    
+    <properties>
+        <maven.compiler.source>6</maven.compiler.source>
+        <maven.compiler.target>1.6</maven.compiler.target>
+        <!--Allure TestNG -->    
+        <aspectj.version>1.8.10</aspectj.version>
+    </properties>
+        
+    <!--Allure TestNG -->    
     <build>
         <plugins>
             <plugin>
