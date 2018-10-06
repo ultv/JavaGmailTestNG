@@ -29,6 +29,11 @@ public class LoginPage {
     @FindBy(className = "gb_bf")
     private WebElement searchField;
 
+    public void openPage(String url)
+    {
+        driver.get(url);
+    }
+
     public void inputLogin(String login)
     {
         loginField.sendKeys(login);
