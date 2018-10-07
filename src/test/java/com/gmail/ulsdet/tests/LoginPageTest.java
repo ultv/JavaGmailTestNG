@@ -1,13 +1,15 @@
 package com.gmail.ulsdet.tests;
 
 import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeTest;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import java.util.concurrent.TimeUnit;
 import com.gmail.ulsdet.pages.LoginPage;
 import utils.ConfigProperties;
+import io.qameta.allure.maven.AllureReportMojo;
 
 public class LoginPageTest {
 
@@ -15,7 +17,7 @@ public class LoginPageTest {
     public static LoginPage loginPage;
 
     //@Parameters("browser")
-    @BeforeTest
+    @BeforeTest(description = "Configure something before test")
     protected WebDriver getDriver() //String browser) {
     {
       //  if(browser.equals("chrome")) {
@@ -34,7 +36,7 @@ public class LoginPageTest {
     }
 
 
-    @Test
+    @Test(description = "Open and login")
     public void loginTest() {
 
         loginPage = new LoginPage(driver);
