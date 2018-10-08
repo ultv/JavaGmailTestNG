@@ -55,7 +55,7 @@ public class LoginPageTest {
     }
 
     @Test(description = "Open home page")
-    public void test_001() {
+    public void testOpenHome() {
 
         loginPage = new LoginPage(driver);
         String expected = "Gmail";
@@ -64,8 +64,8 @@ public class LoginPageTest {
     }
 
 
-    @Test(description = "Enter login")
-    public void test_002() {
+    @Test(description = "Enter login", dependsOnMethods = {"testOpenHome"})
+    public void testEnterLogin() {
 
         loginPage.inputLogin(login);
 
@@ -73,8 +73,8 @@ public class LoginPageTest {
         Assert.assertTrue(actual);
     }
 
-    @Test(description = "Enter pass")
-    public void test_003() {
+    @Test(description = "Enter pass", dependsOnMethods = {"testEnterLogin"})
+    public void testEnterPass() {
 
         loginPage.inputPass(pass);
         mailPage = new MailPage(driver);
@@ -82,15 +82,15 @@ public class LoginPageTest {
         Assert.assertTrue(actual);
     }
 
-    @Test(description = "Search mail")
-    public void test_004() {
+    @Test(description = "Search mail", dependsOnMethods = {"testEnterPass"})
+    public void testSearchMail() {
 
         boolean actual = mailPage.Search(search);
         Assert.assertTrue(actual);
     }
 
-    @Test(description = "Send mail")
-    public void test_005() {
+    @Test(description = "Send mail", dependsOnMethods = {"testSearchMail"})
+    public void testSendMail() {
 
         mailPage.resultCount();
         boolean actual = mailPage.writeMessage(subject, message);
