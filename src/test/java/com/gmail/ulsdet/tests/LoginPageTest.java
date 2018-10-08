@@ -21,6 +21,14 @@ public class LoginPageTest {
     public static MailPage mailPage;
     URL url = null;
 
+    String login = ConfigProperties.getTestProperty("login");
+    String pass = ConfigProperties.getTestProperty("pass");
+    String baseUrl = ConfigProperties.getTestProperty("baseUrl");
+    String search = ConfigProperties.getTestProperty("search");
+    String subject = ConfigProperties.getTestProperty("subject");
+    String message = ConfigProperties.getTestProperty("message");
+    String node = ConfigProperties.getTestProperty("node");
+
     @Parameters("browser")
     @BeforeTest(description = "Configure something before test")
     protected WebDriver getDriver(String browser) {
@@ -35,7 +43,7 @@ public class LoginPageTest {
         }
 
         try {
-            url = new java.net.URL("http://localhost:5555/wd/hub");
+            url = new java.net.URL(node);
         }
         catch( Exception ex) {ex.printStackTrace();}
 
@@ -51,7 +59,7 @@ public class LoginPageTest {
 
         loginPage = new LoginPage(driver);
         String expected = "Gmail";
-        String actual = loginPage.openPage(ConfigProperties.getTestProperty("baseUrl"));
+        String actual = loginPage.openPage(baseUrl);
         Assert.assertEquals(actual, expected);
     }
 
@@ -59,7 +67,7 @@ public class LoginPageTest {
     @Test(description = "Enter login")
     public void test_002() {
 
-        loginPage.inputLogin(ConfigProperties.getTestProperty("login"));
+        loginPage.inputLogin(login);
 
         boolean actual = loginPage.isVissibleProfileIdentifier();
         Assert.assertTrue(actual);
@@ -68,7 +76,7 @@ public class LoginPageTest {
     @Test(description = "Enter pass")
     public void test_003() {
 
-        loginPage.inputPass(ConfigProperties.getTestProperty("pass"));
+        loginPage.inputPass(pass);
         mailPage = new MailPage(driver);
         boolean actual = mailPage.isVissibleWriteButton();
         Assert.assertTrue(actual);
@@ -77,7 +85,7 @@ public class LoginPageTest {
     @Test(description = "Search mail")
     public void test_004() {
 
-        boolean actual = mailPage.Search("in:inbox Александр Седов");
+        boolean actual = mailPage.Search(search);
         Assert.assertTrue(actual);
     }
 
@@ -85,7 +93,7 @@ public class LoginPageTest {
     public void test_005() {
 
         mailPage.resultCount();
-        boolean actual = mailPage.writeMessage("Тестовое задание. Седов", "Количество присланных писем = ");
+        boolean actual = mailPage.writeMessage(subject, message);
         Assert.assertTrue(actual);
     }
 
