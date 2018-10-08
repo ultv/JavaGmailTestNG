@@ -50,7 +50,7 @@ public class MailPage extends WaitAssistant {
     @FindBy(className = "gb_9a")
     private WebElement accountButton;
 
-    private By exitLink = By.linkText("Р’С‹Р№С‚Рё");
+    private By exitLink = By.linkText("Выйти");
 
     private By okMessage = By.className("bAq");
 

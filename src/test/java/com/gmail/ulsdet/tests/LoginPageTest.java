@@ -83,7 +83,7 @@ public class LoginPageTest {
     @Test(description = "Search mail")
     public void test_004() {
 
-        boolean actual = mailPage.Search("in:inbox РђР»РµРєСЃР°РЅРґСЂ РЎРµРґРѕРІ");
+        boolean actual = mailPage.Search("in:inbox Александр Седов");
         Assert.assertTrue(actual);
     }
 
@@ -91,7 +91,7 @@ public class LoginPageTest {
     public void test_005() {
 
         mailPage.resultCount();
-        boolean actual = mailPage.writeMessage("РўРµСЃС‚РѕРІРѕРµ Р·Р°РґР°РЅРёРµ. РЎРµРґРѕРІ", "РљРѕР»РёС‡РµСЃС‚РІРѕ РїСЂРёСЃР»Р°РЅРЅС‹С… РїРёСЃРµРј = ");
+        boolean actual = mailPage.writeMessage("Тестовое задание. Седов", "Количество присланных писем = ");
         Assert.assertTrue(actual);
     }
 
