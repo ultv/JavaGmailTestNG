@@ -5,6 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.Parameters;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -23,22 +24,25 @@ public class LoginPageTest {
     public static MailPage mailPage;
     URL url = null;
 
-    //@Parameters("browser")
+    @Parameters("browser")
     @BeforeTest(description = "Configure something before test")
-    protected WebDriver getDriver() //String browser) {
-    {
-        /*
+    protected WebDriver getDriver(String browser) {
+
+        DesiredCapabilities capabilities = null;
+
         if(browser.equals("chrome")) {
-            System.setProperty("webdriver.chrome.driver", ConfigProperties.getTestProperty("chromeDriverPath"));
-            driver = new ChromeDriver();
+            //System.setProperty("webdriver.chrome.driver", ConfigProperties.getTestProperty("chromeDriverPath"));
+            //driver = new ChromeDriver();
+            capabilities =  DesiredCapabilities.chrome();
        }
         else if (browser.equals("firefox")){
-            System.setProperty("webdriver.gecko.driver", ConfigProperties.getTestProperty("firefoxDriverPath"));
-            driver = new FirefoxDriver();
+            //System.setProperty("webdriver.gecko.driver", ConfigProperties.getTestProperty("firefoxDriverPath"));
+            //driver = new FirefoxDriver();
+            capabilities =  DesiredCapabilities.firefox();
         }
-       */
 
-        DesiredCapabilities capabilities =  DesiredCapabilities.chrome();
+
+        //DesiredCapabilities capabilities =  DesiredCapabilities.chrome();
 
         try{
             url = new java.net.URL("http://localhost:5555/wd/hub");

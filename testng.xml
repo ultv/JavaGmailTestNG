@@ -9,7 +9,7 @@
         </packages>
     </test>
     <test name="FirefoxTest">
-    <parameter name="browser" value="chrome"/>
+    <parameter name="browser" value="firefox"/>
         <packages>
             <package name="com.gmail.ulsdet.*"/>
         </packages>
