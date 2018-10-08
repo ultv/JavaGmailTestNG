@@ -7,12 +7,9 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Parameters;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import java.util.concurrent.TimeUnit;
 import com.gmail.ulsdet.pages.LoginPage;
 import utils.ConfigProperties;
-import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import java.net.URL;
@@ -31,20 +28,13 @@ public class LoginPageTest {
         DesiredCapabilities capabilities = null;
 
         if(browser.equals("chrome")) {
-            //System.setProperty("webdriver.chrome.driver", ConfigProperties.getTestProperty("chromeDriverPath"));
-            //driver = new ChromeDriver();
             capabilities =  DesiredCapabilities.chrome();
-       }
+        }
         else if (browser.equals("firefox")){
-            //System.setProperty("webdriver.gecko.driver", ConfigProperties.getTestProperty("firefoxDriverPath"));
-            //driver = new FirefoxDriver();
             capabilities =  DesiredCapabilities.firefox();
         }
 
-
-        //DesiredCapabilities capabilities =  DesiredCapabilities.chrome();
-
-        try{
+        try {
             url = new java.net.URL("http://localhost:5555/wd/hub");
         }
         catch( Exception ex) {ex.printStackTrace();}

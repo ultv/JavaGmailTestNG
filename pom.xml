@@ -33,8 +33,6 @@
                 <artifactId>allure-maven</artifactId>
                 <version>2.9</version>
             </dependency>
-
-
         
     </dependencies>
     
@@ -43,23 +41,9 @@
         <maven.compiler.target>1.6</maven.compiler.target>
         <!--Allure TestNG -->    
         <aspectj.version>1.8.10</aspectj.version>
-        
-         
-         
-         
-            
-        
-        
     </properties>
-   
-   
-   
-        
+
     <!--Allure TestNG -->
-    
-        
-    
-        
     <build>
         <plugins>
             <plugin>
@@ -72,19 +56,15 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>2.20</version>
                 <configuration>
-                    <reportVersion>2.3.1</reportVersion>
                     <reportsDirectory>${project.basedir}/target/allure-results</reportsDirectory>
-                                        
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
                     </argLine>
-
 
                     <!-- Suite testng xml file to consider for test execution -->
                     <suiteXmlFiles>
                         <suiteXmlFile>testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
-
 
                 </configuration>
                 <dependencies>
@@ -97,7 +77,5 @@
             </plugin>
         </plugins>
     </build>
-    
-
 
 </project>
